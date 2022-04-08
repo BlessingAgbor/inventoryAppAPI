@@ -1,15 +1,15 @@
 const productModel = require('../Model/productModel')
-const companyModel = require('../Model/companyModel')
+const userModel = require('../Model/userModel')
 
 // function to create one product
 const createProduct= async(req, res)=> {
     try{
-     const create= await companyModel.findById(req.params.companyID)
+     const user= await userModel.findById(req.params.userID)
      const product = new productModel(req.body)
-     product.company= create
+     product.user= user
      product.save()
-     create.products.push(product)
-     create.save()
+     user.products.push(product)
+     user.save()
 
      res.status(201).json({
          status: "success",
@@ -28,7 +28,7 @@ const createProduct= async(req, res)=> {
 
 const productUpdate= async(req, res)=> {
     try{
-     const update= await productModel.findByIdAndUpdate(req.params.productID, req.body)
+     const update= await productModel.findByIdAndUpdate(req.params.productID, req.body, {new:true})
      res.status(200).json({
          status: "success",
          message: update
@@ -79,12 +79,12 @@ const productUpdate= async(req, res)=> {
 
 const getAllProducts= async(req, res)=> {
     try{
-    const cId = req.params.companyID
-     const company = await companyModel.findById(cId).populate("products")
+    const uId = req.params.userID
+     const user = await userModel.findById(uId).populate("products")
     //  .populate("products")
      res.status(200).json({
          status: "success",
-         message: company
+         message: user
      })
     }catch(error){
         res.status(400).json({
@@ -96,10 +96,10 @@ const getAllProducts= async(req, res)=> {
 
  const getOneProduct= async(req, res)=> {
     try{
-     const getter= await productModel.findById(req.params.productID)
+     const product = await productModel.findById(req.params.productID)
      res.status(200).json({
          status: "success",
-         message: getter
+         message: product 
      })
     }catch(error){
         res.status(400).json({

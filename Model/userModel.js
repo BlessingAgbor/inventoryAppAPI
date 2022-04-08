@@ -17,6 +17,10 @@ const userModel = mongoose.Schema(
     password: {
       type: String,
     },
+    products:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "products"
+    }]
   },
   {
     timestamps: true,

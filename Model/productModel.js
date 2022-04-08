@@ -12,25 +12,17 @@ const productSchema= new Schema({
         type: Number,
         required: true
     },
-    amount: {
-        type: Number,
-        required: true
-    },
     size:{
         type: String
     },
     brand:{
         type: String,
     }, 
-    company:{
+    user:{
         type: Schema.Types.ObjectId,
-        ref:"company"
+        ref:"users"
     },
-    createdAt: {
-        type: Date, 
-        default: new Date()
-     },
-
+    
 }, {timestamps: true})
 
 module.exports= mongoose.model("products", productSchema)
