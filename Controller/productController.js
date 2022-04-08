@@ -28,7 +28,10 @@ const createProduct= async(req, res)=> {
 
 const productUpdate= async(req, res)=> {
     try{
-     const update= await productModel.findByIdAndUpdate(req.params.productID, req.body, {new:true})
+        const {productQuantity} = req.body
+     const update= await productModel.findByIdAndUpdate(req.params.productID, {
+     productQuantity
+     }, {new:true})
      res.status(200).json({
          status: "success",
          message: update
