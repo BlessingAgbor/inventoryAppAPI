@@ -16,8 +16,8 @@ const productRoute= require('./Routes/productRoute')
 const companyRoute= require('./Routes/companyRoute')
 // for the nodeJs to understand the routing, we need a middlware, i.e the .use
 
-app.use('/api', productRoute)
-app.use('/api', companyRoute)
+app.use('/api/user', productRoute)
+// app.use('/api/user', companyRoute)
 app.use('/api/user', require("./Routes/userRouter"))
 
 
