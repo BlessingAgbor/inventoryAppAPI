@@ -19,7 +19,7 @@ const companyRoute= require('./Routes/companyRoute')
 // for the nodeJs to understand the routing, we need a middlware, i.e the .use
 
 //calling cors for cross communication 
-app.use(cors({origin:"*"}))
+app.use(cors())
 app.use('/api/user', productRoute)
 // app.use('/api/user', companyRoute)
 app.use('/api/user', require("./Routes/userRouter"))
