@@ -101,7 +101,7 @@ router.post("/signin", async (req, res) => {
           _id: findUser._id,
           userName: findUser.userName,
           companyName: findUser.companyName,
-          token,
+          token
         },
       });
     } else {
