@@ -20,7 +20,7 @@ const companyRoute= require('./Routes/companyRoute')
 
 //calling cors for cross communication 
 app.use(cors({origin: "*"}))
-// app.use(cors())
+app.use(cors())
 app.use('/api/user', productRoute)
 // app.use('/api/user', companyRoute)
 app.use('/api/user', require("./Routes/userRouter"))
